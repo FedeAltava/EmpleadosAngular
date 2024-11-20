@@ -21,11 +21,6 @@ arrayCaracteristicas =[""];
 agregarCaracteristias(nuevaCaracteristica:string){
   this.arrayCaracteristicas.push(nuevaCaracteristica);
 }
-
-borrarEmpleado(){
-  this.borrar.emit(this.indice);
-}
-
 ngOnInit(): void {
   
 }

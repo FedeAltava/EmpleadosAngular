@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Empleado } from './empleado.model';
 import { EmpleadoHijoComponent } from "./empleado-hijo/empleado-hijo.component";
+import { ServicioEmpleadosService } from './servicio-empleados.service';
+import { EmpleadosService } from './empleados.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,15 +13,20 @@ import { EmpleadoHijoComponent } from "./empleado-hijo/empleado-hijo.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'Listado de empleados';
-  empleados: Empleado[] = [
-    new Empleado("juan", "garcia", "presidente", 7500),
-    new Empleado("Ramon", "Manolete", "Lipador", 500),
-    new Empleado("Sebastian", "Nuñez", "Informatico", 1200),
-    new Empleado("Maria", "Lopez", "SubDirectora", 1700),
-    new Empleado("Sara", "Ruiz", "Ceo", 2500),
-  ];
+
+  constructor(private miServicio:ServicioEmpleadosService,private empleadosService:EmpleadosService){
+
+    //this.empleados = this.empleadosService.empleados;
+  }
+
+  ngOnInit(): void {
+    this.empleados = this.empleadosService.empleados;
+  }
+
+  empleados: Empleado[] = [];
+
   cuadroNombre: string = "";
   cuadroApellido: string = "";
   cuadroCargo: string = "";
@@ -27,11 +34,8 @@ export class AppComponent {
 
   agregarEmpleado() {
     let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
-    this.empleados.push(miEmpleado)
+    this.miServicio.muestrameMensaje("Nombre del empleado: " + miEmpleado.nombre);
+    this.empleadosService.agregarEmpleadoService(miEmpleado);
   }
-  borrarEmpleado(index: number) {
-    if (index > -1) {
-      this.empleados.splice(index, 1); // Elimina el empleado en el índice dado
-    }
-  }
+
 }
