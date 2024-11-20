@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="container">
+  <div class="col title">
+    <h1>{{title}}</h1>
+
+  </div>
+
+  </div>
+  
+<div class="d-flex flex-column justify-content-center align-items-center gap-3">
+  <app-empleado-hijo *ngFor="let empleado of empleados;let i=index" [empleadoLista]="empleado"
+    [indice]="i"></app-empleado-hijo>
+
+</div>
