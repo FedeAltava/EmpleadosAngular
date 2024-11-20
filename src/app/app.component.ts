@@ -4,7 +4,6 @@ import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Empleado } from './empleado.model';
 import { EmpleadoHijoComponent } from "./empleado-hijo/empleado-hijo.component";
-import { ServicioEmpleadosService } from './servicio-empleados.service';
 import { EmpleadosService } from './empleados.service';
 @Component({
   selector: 'app-root',
@@ -16,7 +15,7 @@ import { EmpleadosService } from './empleados.service';
 export class AppComponent implements OnInit{
   title = 'Listado de empleados';
 
-  constructor(private miServicio:ServicioEmpleadosService,private empleadosService:EmpleadosService){
+  constructor(private empleadosService:EmpleadosService){
 
     //this.empleados = this.empleadosService.empleados;
   }
@@ -34,7 +33,6 @@ export class AppComponent implements OnInit{
 
   agregarEmpleado() {
     let miEmpleado = new Empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
-    this.miServicio.muestrameMensaje("Nombre del empleado: " + miEmpleado.nombre);
     this.empleadosService.agregarEmpleadoService(miEmpleado);
   }
 

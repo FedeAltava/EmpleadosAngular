@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ServicioEmpleadosService } from '../servicio-empleados.service';
+
 
 @Component({
   selector: 'app-caracteristicas-empleado',
@@ -12,10 +12,9 @@ import { ServicioEmpleadosService } from '../servicio-empleados.service';
 export class CaracteristicasEmpleadoComponent implements OnInit {
   @Output() caracteristicasEmpleado = new EventEmitter<string>();
 
-  constructor(private miServicio:ServicioEmpleadosService){}
+  constructor(){}
   
   agregaCaracteristicas(value: string) {
-    this.miServicio.muestrameMensaje(value);
     this.caracteristicasEmpleado.emit(value);
   }
 
