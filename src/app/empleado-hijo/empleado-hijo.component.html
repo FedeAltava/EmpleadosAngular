@@ -2,13 +2,19 @@
   <div class="row">
     <div class="col">
       <div>
-        {{indice+1}} :
-        {{empleadoLista.nombre}} {{empleadoLista.apellido}} {{empleadoLista.cargo}} {{empleadoLista.salario}}
-        <button class="btn btn-primary "  (click)="goToEditById(indice)">Editar</button>
-        <button class="btn btn-danger ml-2"  (click)="borraEmpleado(indice)">Borrar</button>
-        <ul style="list-style: none;">
-          <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
-        </ul>
+        <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+          <div class="card-header">{{indice+1}} :{{empleadoLista.nombre}}</div>
+          <div class="card-body">
+            <h5 class="card-title">Apellidos: {{empleadoLista.apellido}}</h5>
+            <h5 class="card-title"> Cargo: {{empleadoLista.cargo}}</h5>
+            <h5 class="card-title">Salario :{{empleadoLista.salario}}</h5>
+            <button class="btn btn-primary "  (click)="goToEditById(indice)">Editar</button>
+            <button class="btn btn-danger ml-2"  (click)="borraEmpleado(indice)">Borrar</button>
+            <ul style="list-style: none;">
+              <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
+            </ul>
+          </div>
+        </div>
         <app-caracteristicas-empleado (caracteristicasEmpleado)="agregarCaracteristias($event)">
         </app-caracteristicas-empleado>
       </div>
