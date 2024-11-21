@@ -15,10 +15,26 @@ export class EmpleadosService {
     new Empleado("Sara", "Ruiz", "Ceo", 2500),
   ];
 
+  getEmpleadoById(indice:number){
+    let empleado:Empleado = this.empleados[indice];
+    return empleado;
+  }
   agregarEmpleadoService(empleado:Empleado){
     this.servVentanaEmergente.muestrameMensaje("Persona por agregar:"+"\n"+
       empleado.nombre+"con salario: "+empleado.salario);
     this.empleados.push(empleado);
+  }
+
+  editarEmpleado(indice:number,empleado:Empleado){
+    let empleadoEditado = this.empleados[indice];
+    empleadoEditado.nombre = empleado.nombre;
+    empleadoEditado.apellido = empleado.apellido;
+    empleadoEditado.cargo = empleado.cargo;
+    empleadoEditado.salario = empleado.salario;
+
+  }
+  borrarEmpleado(indice:number){
+    this.empleados.splice(indice,1);
   }
   constructor(private servVentanaEmergente:ServicioEmpleadosService) { }
 }

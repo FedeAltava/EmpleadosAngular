@@ -10,5 +10,5 @@ export const routes: Routes = [
     {path:'agregar',component:AgregarEmpleadoComponent},
     {path:'contacto',component:ContactoComponent},
     {path:'quienes',component:QuienesComponent},
-    {path:'editar',component:EditarComponent}
+    {path:'editar/:id',component:EditarComponent}
 ];
