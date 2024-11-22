@@ -1,5 +1,5 @@
 <div class="container">
-    <form action="" class="form-group row">
+    <form action="" class="form-group row"(ngSubmit)="agregarEmpleado()">
         <div class="form-group col-md-3">
           <label for="nombre">Nombre: </label>
           <input type="text" name="nombre" id="nombre" placeholder="nombre" class="form-control" [(ngModel)]="cuadroNombre">
@@ -19,7 +19,7 @@
             [(ngModel)]="cuadroSalario">
         </div>
         <div class="col">
-          <button type="submit" class="btn btn-outline-primary mt-2" (click)="agregarEmpleado()">Agregar</button>
+          <button type="submit" class="btn btn-outline-primary mt-2" >Agregar</button>
         </div>
       </form>
     </div>
