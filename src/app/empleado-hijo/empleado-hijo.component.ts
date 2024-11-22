@@ -4,6 +4,7 @@ import { CaracteristicasEmpleadoComponent } from "../caracteristicas-empleado/ca
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { EmpleadosService } from '../empleados.service';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { EmpleadosService } from '../empleados.service';
   styleUrl: './empleado-hijo.component.css'
 })
 export class EmpleadoHijoComponent implements OnInit{
-constructor(private router:Router,private empleadoService:EmpleadosService){}
+constructor(private router:Router,private empleadoService:EmpleadosService,private dataService:DataService){}
 @Input() empleadoLista:Empleado;
 @Input() indice:number;
 @Output() borrar = new EventEmitter<number>();
@@ -30,6 +31,7 @@ borraEmpleado(indice:number){
 goToEditById(indice:number){
   this.router.navigate(['editar',indice])
 }
+
 ngOnInit(): void {
   
 }
